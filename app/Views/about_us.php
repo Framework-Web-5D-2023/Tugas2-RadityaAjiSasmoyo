@@ -29,7 +29,11 @@
 			</tr>
 			<tr>
 				<td>No. HP:</td>
-				<td><?= $phone ?></td>
+				<td>
+					<a href="https://wa.me/6281290264815" target="_blank">
+						<i class="fab fa-whatsapp"></i> <?= $phone ?>
+					</a>
+				</td>
 			</tr>
 			<tr>
 				<td>Email:</td>
