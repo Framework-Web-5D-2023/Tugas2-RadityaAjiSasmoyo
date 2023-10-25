@@ -8,6 +8,7 @@ class ExtendsController extends BaseController {
 	
 	public function index() {
         $data['nickname'] = "Radit";
+		$data['title'] = "Home";
         return view('home', $data);
     }
 	
@@ -20,6 +21,7 @@ class ExtendsController extends BaseController {
         $data['phone'] = "+62 812-9026-4815";
         $data['email'] = "2010631170111@student.unsika.ac.id";
         $data['username'] = "raditya2010631170111";
+		$data['title'] = "About Us";
 
         return view('about_us', $data);
 		

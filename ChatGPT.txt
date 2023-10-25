@@ -35,6 +35,7 @@ class ExtendsController extends BaseController {
 	
 	public function index() {
         $data['nickname'] = "Radit";
+		$data['title'] = "Home";
         return view('home', $data);
     }
 	
@@ -47,12 +48,14 @@ class ExtendsController extends BaseController {
         $data['phone'] = "+62 812-9026-4815";
         $data['email'] = "2010631170111@student.unsika.ac.id";
         $data['username'] = "raditya2010631170111";
+		$data['title'] = "About Us";
 		
 		$mahasiswa = $this->mahasiswaModel->getAllMahasiswa();
-		$data = [
+		// $data = [ //overwritting
+		$data = array_merge($data, [
 			"title" => "Home",
 			"mahasiswa" => $mahasiswa,
-		];
+		]);
 
         return view('about_us', $data);
 		
@@ -62,6 +65,7 @@ class ExtendsController extends BaseController {
 		$this->load->view('about_us', $data);
 	}
 }
+
 
 
 // application/controllers/BaseController.php
@@ -124,7 +128,7 @@ saya mengubah initController di BaseController
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title><?= $title ?></title>
 </head>
 <body>
 
@@ -143,7 +147,7 @@ saya mengubah initController di BaseController
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title><?= $title ?></title>
 </head>
 <body>
 <?= $this->include('navbar') ?>
@@ -237,6 +241,7 @@ saya mengubah initController di BaseController
 </html>
 
 
+
 // application/config/routes.php
 <?php
 
@@ -246,5 +251,5 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-$routes->get('home', 'ExtendsController::index');
-$routes->get('about_us', 'ExtendsController::profile');
+$routes->get('/home', 'ExtendsController::index');
+$routes->get('/about_us', 'ExtendsController::profile');
